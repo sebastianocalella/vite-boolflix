@@ -1,5 +1,6 @@
 <script>
     import axios from 'axios';
+    import { store } from './store.js';
 
     import AppHeader from './components/AppHeader.vue';
     import AppMain from './components/AppMain.vue'
@@ -8,6 +9,11 @@
         components: {
             AppHeader,
             AppMain,
+        },
+        data(){
+            return{
+                store
+            }
         },
         methods:{
             getFilmList(){
@@ -19,6 +25,8 @@
                 })
                     .then((response)=>{
                         console.log(response.data.results);
+                        this.store.FilmList = response.data.results;
+                        console.log(this.store.FilmList);
                     })
                     .catch(function (error) {
                     console.log(error);
