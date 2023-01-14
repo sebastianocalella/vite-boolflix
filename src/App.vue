@@ -25,8 +25,8 @@
                 })
                     .then((response)=>{
                         console.log(response.data.results);
-                        this.store.FilmList = response.data.results;
-                        console.log(this.store.FilmList);
+                        this.store.filmList = response.data.results;
+                        console.log(this.store.filmList);
                     })
                     .catch(function (error) {
                     console.log(error);
