@@ -15,7 +15,7 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img class="Backdrop-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
+                    <img class="post-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
                 </div>
                 <div class="flip-card-back">
                     <span><b>Title:</b> {{ title }}</span>
@@ -114,10 +114,9 @@ export default {
     .flip-card-front{
         overflow: hidden;
     }
-
     .flip-card-back {
         background-color: black;
-        color: white;
+        color: rgb(235, 227, 227);
         transform: rotateY(180deg);
         padding: 20px 15px;
         span{
