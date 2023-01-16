@@ -59,6 +59,7 @@
         created(){
             //this.getFilmList();
             this.getApiRequests();
+            console.log(store.filmList)
         }
     }
 </script>
@@ -75,5 +76,10 @@
 <style lang="scss">
 
 @use './styles/general.scss' as *;
+@use './styles/partials/variables' as *;
+
+body{
+    background-color: $main-background;
+}
 
 </style>
