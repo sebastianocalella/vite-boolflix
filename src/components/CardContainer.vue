@@ -6,13 +6,15 @@
             :title="CardElement.title"
             :original_title="CardElement.original_title"
             :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
-            :rating="CardElement.vote_average"/>
+            :rating="CardElement.vote_average"
+            :image_URL="CardElement.backdrop_path"/>
         <h2>Series</h2>
         <CardElement v-for="CardElement in store.tvSeriesList"
             :title="CardElement.name"
             :original_title="original_name"
             :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
-            :rating="CardElement.vote_average"/>
+            :rating="CardElement.vote_average"
+            :image_URL="CardElement.backdrop_path"/>
 
     </div>
 </template>

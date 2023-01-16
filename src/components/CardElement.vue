@@ -2,8 +2,9 @@
     <div class="card-container">
         <h2>Title: {{ title }}</h2>
         <h3>Original Title: {{ original_title }}</h3>
+        <img class="Backdrop-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
         <p>
-            Language: <img class="country-flag" :src="getImagePath(language+'.png')" alt="">
+            Language: <img class="country-flag" :src="getFlag(language+'.png')" alt="">
             <br>
             rating: {{ rating }}
         </p>
@@ -18,10 +19,14 @@ export default {
         original_title: String,
         language: String,
         rating: Number,
+        image_URL: String,
     },
     methods:{
-        getImagePath: function(imagePath){
+        getFlag: function(imagePath){
             return new URL('../assets/flags/'+imagePath, import.meta.url).href
+        },
+        getBackdropPath: function(imagePath){
+            return new URL('https://image.tmdb.org/t/p/w342'+imagePath, import.meta.url).href
         }
     },
     data(){
