@@ -6,7 +6,7 @@
         <p>
             Language: <img class="country-flag" :src="getFlag(language+'.png')" alt="">
             <br>
-            rating: {{ rating }}
+            rating: {{ Math.ceil(rating/2) }}
         </p>
         <hr>
     </div>
