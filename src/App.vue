@@ -64,10 +64,16 @@
 </script>
 
 <template>
-    <AppHeader @user-search="getApiRequests"/>
-    <AppMain/>
+    <header>
+        <AppHeader @user-search="getApiRequests"/>
+    </header>
+    <main>
+        <AppMain/>
+    </main>
 </template>
 
-<style>
+<style lang="scss">
+
+@use './styles/general.scss' as *;
 
 </style>
