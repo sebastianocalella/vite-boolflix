@@ -8,6 +8,7 @@
             <br>
             rating: {{ Math.ceil(rating/2) }}
         </p>
+        <font-awesome-icon icon="fa-solid fa-star"/>
         <hr>
     </div>
 </template>
