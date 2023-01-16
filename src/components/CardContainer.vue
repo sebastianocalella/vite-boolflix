@@ -1,11 +1,18 @@
 <template>
     <div class="cards-container">
         <!--<button @click="consoleData(store)">console</button>-->
+        <h2>Movies</h2>
         <CardElement v-for="CardElement in store.filmList"
-        :title="CardElement.title"
-        :original_title="CardElement.original_title"
-        :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
-        :rating="CardElement.vote_average"/>
+            :title="CardElement.title"
+            :original_title="CardElement.original_title"
+            :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
+            :rating="CardElement.vote_average"/>
+        <h2>Series</h2>
+        <CardElement v-for="CardElement in store.tvSeriesList"
+            :title="CardElement.name"
+            :original_title="original_name"
+            :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
+            :rating="CardElement.vote_average"/>
 
     </div>
 </template>
@@ -33,5 +40,8 @@ export default {
 </script>
 
 <style scoped>
-    
+    h2{
+        font-size: 4rem;
+        text-align: center;
+    }
 </style>
