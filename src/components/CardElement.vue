@@ -3,7 +3,7 @@
         <h2>Title: {{ title }}</h2>
         <h3>Original Title: {{ original_title }}</h3>
         <p>
-            Language: {{ language }}
+            Language: <img :src="getImagePath(language+'.png')" alt="">
             <br>
             rating: {{ rating }}
         </p>
@@ -18,6 +18,11 @@ export default {
         original_title: String,
         language: String,
         rating: Number,
+    },
+    methods:{
+        getImagePath: function(imagePath){
+            return new URL('../assets/flags/'+imagePath, import.meta.url).href
+        }
     }
 }
 </script>
