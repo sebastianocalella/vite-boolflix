@@ -10,7 +10,6 @@
         </p>
         <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star"/>
         <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star"/>
-        <hr>
     </div>
 </template>
 
@@ -42,6 +41,9 @@ export default {
 <style scoped>
     .card-container{
         width: 342px;
+        height: 480px;
+        margin: 0 20px 20px;
+        background-color: bisque;
     }
 
     .country-flag{
