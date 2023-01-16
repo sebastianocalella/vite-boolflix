@@ -12,35 +12,59 @@
         },
         data(){
             return{
-                store
+                store,
+                movieUrl:'https://api.themoviedb.org/3/search/movie',
+                tvSeriesUrl:'https://api.themoviedb.org/3/search/tv'
+
             }
         },
         methods:{
-            getFilmList(value){
-                axios.get('https://api.themoviedb.org/3/search/movie',{
+            getApiRequests(value){
+                Promise.all([
+                    this.getFilmList(value),
+                    this.getTvSeriesList(value)
+                ])
+                .then(()=>{
+                    [this.filmList,this.tvSeries]
+                })
+            },
+            getFilmList: function(value){
+                return axios.get('https://api.themoviedb.org/3/search/movie',{
                     params:{
                         api_key: 'dcba638d378e189477e8023df53d6ccf',
                         query: value
                     },
                 })
                 .then((response)=>{
-                    console.log(response.data.results);
-                    this.store.filmList = response.data.results;
-                    console.log(this.store.filmList);
+                    //console.log(response)
+                    store.filmList = response.data.results;
+                    console.log(store.filmList)
                 })
-                .catch(function (error) {
-                    console.log(error);
+            },
+            getTvSeriesList: function(value){
+                return axios.get('https://api.themoviedb.org/3/search/tv',{
+                    params:{
+                        api_key: 'dcba638d378e189477e8023df53d6ccf',
+                        query: value
+                    },
                 })
-            }
+                .then((response)=>{
+                    //console.log(response)
+                    store.tvSeriesList = response.data.results;
+                    console.log(store.tvSeriesList)
+                })
+            },
+
         },
         created(){
-            this.getFilmList();
+            //this.getFilmList();
+            this.getApiRequests();
         }
     }
 </script>
 
 <template>
-    <AppHeader @user-search="getFilmList"/>
+    <AppHeader @user-search="getApiRequests"/>
     <AppMain/>
 </template>
 
