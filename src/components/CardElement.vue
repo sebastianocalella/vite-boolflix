@@ -6,10 +6,10 @@
         <p>
             Language: <img class="country-flag" :src="getFlag(language+'.png')" alt="">
             <br>
-            rating: {{ Math.ceil(rating/2) }}
+            rating: {{ this.fiveStarRating }}
         </p>
-        <font-awesome-icon icon="fa-solid fa-star"/>
-        <font-awesome-icon icon="fa-regular fa-star"/>
+        <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star"/>
+        <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star"/>
         <hr>
     </div>
 </template>
@@ -33,7 +33,7 @@ export default {
     },
     data(){
         return{
-
+            fiveStarRating: Math.ceil(this.rating/2)
         }
     }
 }
