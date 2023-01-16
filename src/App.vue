@@ -16,19 +16,19 @@
             }
         },
         methods:{
-            getFilmList(){
+            getFilmList(value){
                 axios.get('https://api.themoviedb.org/3/search/movie',{
                     params:{
                         api_key: 'dcba638d378e189477e8023df53d6ccf',
-                        query: 'ritorno+al+futuro'
+                        query: value
                     },
                 })
-                    .then((response)=>{
-                        console.log(response.data.results);
-                        this.store.filmList = response.data.results;
-                        console.log(this.store.filmList);
-                    })
-                    .catch(function (error) {
+                .then((response)=>{
+                    console.log(response.data.results);
+                    this.store.filmList = response.data.results;
+                    console.log(this.store.filmList);
+                })
+                .catch(function (error) {
                     console.log(error);
                 })
             }
@@ -40,7 +40,7 @@
 </script>
 
 <template>
-    <AppHeader/>
+    <AppHeader @user-search="getFilmList"/>
     <AppMain/>
 </template>
 
