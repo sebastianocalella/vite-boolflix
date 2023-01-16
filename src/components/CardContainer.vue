@@ -47,6 +47,8 @@ export default {
 
 <style lang="scss" scoped>
 
+@use '../styles/partials/variables' as *;
+
     .content-container{
         display: flex;
         flex-wrap: wrap;
@@ -55,6 +57,7 @@ export default {
     h2{
         font-size: 4rem;
         width: 100%;
-        padding: 20px;
+        padding: 60px 25px 45px;
+        color: $main-color;
     }
 </style>

@@ -15,7 +15,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@use '../styles/partials/variables' as *;
     .container{
         padding: 50px 6%;
+        background-color: $main-background;
     }
 </style>

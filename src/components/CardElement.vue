@@ -1,17 +1,5 @@
 <template>
-    <div class="card-container">
-        <!--<h2>Title: {{ title }}</h2>
-        <h3>Original Title: {{ original_title }}</h3>
-        <img class="Backdrop-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
-        <p>
-            Language: <img class="country-flag" :src="getFlag(language+'.png')" alt="">
-            <br>
-            rating: {{ this.fiveStarRating }}
-        </p>
-        <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star"/>
-        <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star"/>
-    -->
-        <div class="card">
+    <div class="card">
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
@@ -19,22 +7,18 @@
                 </div>
                 <div class="flip-card-back">
                     <span><b>Title:</b> {{ title }}</span>
-                    <br>
                     <span><b>Original Title:</b> {{ original_title }}</span>
-                    <br>
                     <span>
                         <b>Language:</b>
                         <img class="country-flag" :src="getFlag(language+'.png')" alt="">
                     </span> 
-                    <br>
                     <span><b>rating: </b>
                         <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star" class="star"/>
-                    <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star" class="star"/>
+                        <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star" class="star"/>
                     </span>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </template>
 
@@ -100,15 +84,6 @@ export default {
         height: 100%;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-        
-        span{
-            display: block;
-            margin-bottom: 18px;
-        }
-
-        .star{
-            color: gold;
-        }
     }
 
     .flip-card-front{
@@ -121,6 +96,15 @@ export default {
         padding: 20px 15px;
         span{
             font-size: 1.5rem;
+        }
+
+        span{
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .star{
+            color: gold;
         }
     }
 }
