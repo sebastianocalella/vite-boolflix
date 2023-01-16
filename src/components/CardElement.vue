@@ -3,7 +3,7 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img class="post-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
+                    <img class="post-image" :src="(image_URL) ? getBackdropPath(image_URL) : getLogo()" alt="ciao =D">
                 </div>
                 <div class="flip-card-back">
                     <span><b>Title:</b> {{ title }}</span>
@@ -35,6 +35,9 @@ export default {
         getFlag: function(imagePath){
             return new URL('../assets/flags/'+imagePath, import.meta.url).href
         },
+        getLogo: function(){
+            return new URL('../assets/images/one-letter-logo.png', import.meta.url).href
+        },
         getBackdropPath: function(imagePath){
             return new URL('https://image.tmdb.org/t/p/w342'+imagePath, import.meta.url).href
         }
@@ -48,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@use '../styles/partials/variables' as *;
     .country-flag{
         width: 40px;
         vertical-align: middle;
@@ -90,7 +93,7 @@ export default {
         overflow: hidden;
     }
     .flip-card-back {
-        background-color: black;
+        background-color: $card-background;
         color: rgb(235, 227, 227);
         transform: rotateY(180deg);
         padding: 20px 15px;
