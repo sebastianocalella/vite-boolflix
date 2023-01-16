@@ -3,7 +3,7 @@
         <h2>Title: {{ title }}</h2>
         <h3>Original Title: {{ original_title }}</h3>
         <p>
-            Language: <img :src="getImagePath(language+'.png')" alt="">
+            Language: <img class="country-flag" :src="getImagePath(language+'.png')" alt="">
             <br>
             rating: {{ rating }}
         </p>
@@ -23,6 +23,11 @@ export default {
         getImagePath: function(imagePath){
             return new URL('../assets/flags/'+imagePath, import.meta.url).href
         }
+    },
+    data(){
+        return{
+
+        }
     }
 }
 </script>
@@ -30,5 +35,9 @@ export default {
 <style scoped>
     .card-container{
         width: 342px;
+    }
+
+    .country-flag{
+        width: 25px;
     }
 </style>

@@ -1,10 +1,10 @@
 <template>
     <div class="cards-container">
-        <!--<button @click="consoleData(store)">console</button>-->
+        <button @click="consoleData(store)">console</button>
         <CardElement v-for="CardElement in store.filmList"
         :title="CardElement.title"
         :original_title="CardElement.original_title"
-        :language="CardElement.original_language"
+        :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
         :rating="CardElement.vote_average"/>
 
     </div>
@@ -20,7 +20,8 @@ export default {
     },
     data(){
         return{
-            store
+            store,
+            flagList: ['de','en','es','fi','fr','it','ja','ko','pl','zh'],
         }
     },
     methods: {
