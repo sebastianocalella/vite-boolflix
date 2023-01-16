@@ -1,15 +1,23 @@
 <template>
     <div class="card-container">
-        <h2>{{ title }}</h2>
-        <img src="" alt="">
+        <h2>Title: {{ title }}</h2>
+        <h3>Original Title: {{ original_title }}</h3>
+        <p>
+            Language: {{ language }}
+            <br>
+            rating: {{ rating }}
+        </p>
+        <hr>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        imgUrl: String,
         title: String,
+        original_title: String,
+        language: String,
+        rating: Number,
     }
 }
 </script>

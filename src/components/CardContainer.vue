@@ -2,8 +2,11 @@
     <div class="cards-container">
         <!--<button @click="consoleData(store)">console</button>-->
         <CardElement v-for="CardElement in store.filmList"
-        :imgUrl="CardElement.backdrop_path"
-        :title="CardElement.title"/>
+        :title="CardElement.title"
+        :original_title="CardElement.original_title"
+        :language="CardElement.original_language"
+        :rating="CardElement.vote_average"/>
+
     </div>
 </template>
 
