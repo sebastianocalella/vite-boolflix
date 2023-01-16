@@ -1,6 +1,8 @@
 <template>
     <div class="cards-container">
-        <!--<button @click="consoleData(store)">console</button>-->
+        <div v-if="(!store.filmList)&&(!store.tvSeriesList)" class="logo-banner">
+            <img :src="getLogo()" alt="netflix Logo">
+        </div>
         <section class="content-container">
             <h2 v-if="store.filmList">Movies</h2>
             <CardElement v-for="CardElement in store.filmList"
@@ -38,8 +40,8 @@ export default {
         }
     },
     methods: {
-        consoleData(element){
-            console.log(element);
+        getLogo: function(){
+            return new URL('../assets/images/one-letter-logo.png', import.meta.url).href
         }
     }
 }
@@ -49,6 +51,11 @@ export default {
 
 @use '../styles/partials/variables' as *;
 
+    
+    .logo-banner{
+        text-align: center;
+        margin-top: 200px;
+    }
     .content-container{
         display: flex;
         flex-wrap: wrap;
