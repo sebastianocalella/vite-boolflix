@@ -1,6 +1,6 @@
 <template>
     <div class="card-container">
-        <h2>Title: {{ title }}</h2>
+        <!--<h2>Title: {{ title }}</h2>
         <h3>Original Title: {{ original_title }}</h3>
         <img class="Backdrop-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
         <p>
@@ -10,6 +10,31 @@
         </p>
         <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star"/>
         <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star"/>
+    -->
+        <div class="card">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img class="Backdrop-image" :src="getBackdropPath(image_URL)" alt="ciao =D">
+                </div>
+                <div class="flip-card-back">
+                    <span><b>Title:</b> {{ title }}</span>
+                    <br>
+                    <span><b>Original Title:</b> {{ original_title }}</span>
+                    <br>
+                    <span>
+                        <b>Language:</b>
+                        <img class="country-flag" :src="getFlag(language+'.png')" alt="">
+                    </span> 
+                    <br>
+                    <span><b>rating: </b>
+                        <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star" class="star"/>
+                    <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star" class="star"/>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </template>
 
@@ -38,15 +63,66 @@ export default {
 }
 </script>
 
-<style scoped>
-    .card-container{
-        width: 342px;
-        height: 480px;
-        margin: 0 20px 20px;
-        background-color: bisque;
-    }
+<style lang="scss" scoped>
 
     .country-flag{
-        width: 25px;
+        width: 40px;
+        vertical-align: middle;
+        margin-left: 12px;
     }
+
+    .card {
+
+    .flip-card {
+        background-color: transparent;
+        width: 342px;
+        height: 513px;
+        perspective: 1450px;
+        margin-bottom: 20px;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        
+        span{
+            display: block;
+            margin-bottom: 18px;
+        }
+
+        .star{
+            color: gold;
+        }
+    }
+
+    .flip-card-front{
+        overflow: hidden;
+    }
+
+    .flip-card-back {
+        background-color: black;
+        color: white;
+        transform: rotateY(180deg);
+        padding: 20px 15px;
+        span{
+            font-size: 1.5rem;
+        }
+    }
+}
 </style>

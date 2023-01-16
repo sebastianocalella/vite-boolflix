@@ -8,7 +8,7 @@
                 :original_title="CardElement.original_title"
                 :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
                 :rating="CardElement.vote_average"
-                :image_URL="CardElement.backdrop_path"/>
+                :image_URL="CardElement.poster_path"/>
         </div>
         <div class="content-container">
             <h2>Series</h2>
@@ -17,7 +17,7 @@
                 :original_title="original_name"
                 :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
                 :rating="CardElement.vote_average"
-                :image_URL="CardElement.backdrop_path"/>
+                :image_URL="CardElement.poster_path"/>
         </div>
 
     </div>
