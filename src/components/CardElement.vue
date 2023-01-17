@@ -27,8 +27,8 @@
                     <div>
                         <span>cast:</span>
                     </div>
-                    <span v-for="actor in cast">
-                        {{ actor.name }}
+                    <span v-for="actor in cast.slice(0,4)">
+                        {{ actor.name }}, 
                     </span>
                 </div>
             </div>
