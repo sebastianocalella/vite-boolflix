@@ -3,7 +3,7 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img class="post-image" :src="(image_URL) ? getBackdropPath(image_URL) : getLogo()" alt="ciao =D">
+                    <img class="post-image" :src="(image_URL) ? getPosterPath(image_URL) : getLogo()" alt="ciao =D">
                 </div>
                 <div class="flip-card-back">
                     <span><b>Title:</b> {{ title }}</span>
@@ -38,7 +38,7 @@ export default {
         getLogo: function(){
             return new URL('../assets/images/one-letter-logo.png', import.meta.url).href
         },
-        getBackdropPath: function(imagePath){
+        getPosterPath: function(imagePath){
             return new URL('https://image.tmdb.org/t/p/w342'+imagePath, import.meta.url).href
         }
     },
