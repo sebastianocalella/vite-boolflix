@@ -1,7 +1,7 @@
 <template>
     <div class="cards-container">
         <div v-if="(!store.filmList)&&(!store.tvSeriesList)" class="logo-banner">
-            <img :src="getLogo()" alt="netflix Logo">
+            <img :src="getBackground()" alt="netflix Logo">
         </div>
         <section class="content-container">
             <h2 v-if="store.filmList">Movies</h2>
@@ -40,8 +40,8 @@ export default {
         }
     },
     methods: {
-        getLogo: function(){
-            return new URL('../assets/images/one-letter-logo.png', import.meta.url).href
+        getBackground: function(){
+            return new URL('../assets/images/netflix-main-background.png', import.meta.url).href
         }
     }
 }
@@ -54,7 +54,12 @@ export default {
     
     .logo-banner{
         text-align: center;
-        margin-top: 200px;
+        padding-top: 300px;
+        img{
+            width: 60%;
+            -webkit-filter: drop-shadow(12px 12px 12px #080808 );
+            filter: drop-shadow(12px 12px 12px #080808);
+        }
     }
     .content-container{
         display: flex;
