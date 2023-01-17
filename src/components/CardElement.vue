@@ -3,18 +3,32 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                    <img class="post-image" :src="(image_URL) ? getPosterPath(image_URL) : getLogo()" alt="ciao =D">
+                    <img class="post-image" :src="(image_URL) ? getPosterPath(image_URL) : getLogo()" :alt="title">
                 </div>
                 <div class="flip-card-back">
-                    <span><b>Title:</b> {{ title }}</span>
-                    <span><b>Original Title:</b> {{ original_title }}</span>
-                    <span>
-                        <b>Language:</b>
-                        <img class="country-flag" :src="getFlag(language+'.png')" alt="">
-                    </span> 
-                    <span><b>rating: </b>
-                        <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star" class="star"/>
-                        <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star" class="star"/>
+                    <div>
+                        <span><b>Title:</b> {{ title }}</span>
+                    </div>
+                    <div>
+                        <span><b>Original Title:</b> {{ original_title }}</span>
+                    </div>
+                    <div>
+                        <span>
+                            <b>Language:</b>
+                            <img class="country-flag" :src="getFlag(language+'.png')" alt="">
+                        </span> 
+                    </div>
+                    <div>
+                        <span><b>rating: </b>
+                            <font-awesome-icon v-for="star in this.fiveStarRating" icon="fa-solid fa-star" class="star"/>
+                            <font-awesome-icon v-for="star in (5-this.fiveStarRating)" icon="fa-regular fa-star" class="star"/>
+                        </span>
+                    </div>
+                    <div>
+                        <span>cast:</span>
+                    </div>
+                    <span v-for="actor in cast">
+                        {{ actor.name }}
                     </span>
                 </div>
             </div>
@@ -23,6 +37,9 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
     props: {
         title: String,
@@ -30,6 +47,7 @@ export default {
         language: String,
         rating: Number,
         image_URL: String,
+        content_id: Number,
     },
     methods:{
         getFlag: function(imagePath){
@@ -40,11 +58,26 @@ export default {
         },
         getPosterPath: function(imagePath){
             return new URL('https://image.tmdb.org/t/p/w342'+imagePath, import.meta.url).href
+        },
+        getCast(id){
+            axios.get('https://api.themoviedb.org/3/movie/'+id+'/credits',{
+                params:{
+                    api_key: 'dcba638d378e189477e8023df53d6ccf'
+                }
+            })
+            .then((response)=>{
+                console.log(response.data.cast);
+                this.cast = response.data.cast;
+            })
         }
+    },
+    created(){
+        this.getCast(this.content_id)
     },
     data(){
         return{
-            fiveStarRating: Math.ceil(this.rating/2)
+            fiveStarRating: Math.ceil(this.rating/2),
+            cast:[]
         }
     }
 }
@@ -101,8 +134,7 @@ export default {
             font-size: 1.5rem;
         }
 
-        span{
-            display: block;
+        div{
             margin-bottom: 18px;
         }
 

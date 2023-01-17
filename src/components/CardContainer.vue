@@ -10,7 +10,8 @@
                 :original_title="CardElement.original_title"
                 :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
                 :rating="CardElement.vote_average"
-                :image_URL="CardElement.poster_path"/>
+                :image_URL="CardElement.poster_path"
+                :content_id="CardElement.id"/>
         </section>
         <section class="content-container">
             <h2 v-if="store.tvSeriesList">Series</h2>
@@ -19,7 +20,8 @@
                 :original_title="original_name"
                 :language="(this.flagList.includes(CardElement.original_language)) ? CardElement.original_language : 'Unknown_flag'"
                 :rating="CardElement.vote_average"
-                :image_URL="CardElement.poster_path"/>
+                :image_URL="CardElement.poster_path"
+                :content_id="CardElement.id"/>
         </section>
 
     </div>
@@ -28,6 +30,7 @@
 <script>
 import CardElement from './CardElement.vue';
 import {store} from '../store';
+import axios from 'axios';
 
 export default {
     components: { 
@@ -37,13 +40,14 @@ export default {
         return{
             store,
             flagList: ['de','en','es','fi','fr','it','ja','ko','pl','zh'],
+            cast: [],
         }
     },
     methods: {
         getBackground: function(){
             return new URL('../assets/images/netflix-main-background.png', import.meta.url).href
-        }
-    }
+        },
+    },
 }
 </script>
 

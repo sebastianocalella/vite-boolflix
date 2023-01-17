@@ -15,7 +15,6 @@
                 store,
                 movieUrl:'https://api.themoviedb.org/3/search/movie',
                 tvSeriesUrl:'https://api.themoviedb.org/3/search/tv'
-
             }
         },
         methods:{
@@ -38,7 +37,7 @@
                 .then((response)=>{
                     //console.log(response)
                     store.filmList = response.data.results;
-                    console.log(store.filmList)
+                    //console.log(store.filmList)
                 })
             },
             getTvSeriesList: function(value){
@@ -51,7 +50,7 @@
                 .then((response)=>{
                     //console.log(response)
                     store.tvSeriesList = response.data.results;
-                    console.log(store.tvSeriesList)
+                    //console.log(store.tvSeriesList)
                 })
             },
 
@@ -59,7 +58,7 @@
         created(){
             //this.getFilmList();
             this.getApiRequests();
-            console.log(store.filmList)
+            //console.log(store.filmList)
         }
     }
 </script>
